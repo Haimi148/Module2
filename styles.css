@@ -285,3 +285,16 @@ footer p {
   text-align: center;
 
 }
+
+
+/*  Image Gallery */
+
+// Add a click event listener to each gallery item
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Open the clicked image in a new tab
+    window.open(item.querySelector('img').src, '_blank');
+  });
+});
