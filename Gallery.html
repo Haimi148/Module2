@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src="Gallery.css"></script>
     <link rel="stylesheet" type="text/css" href="Gallery.css">
 
     <title>Document</title>
@@ -30,6 +30,8 @@
         </div>
       </nav>
 
+      
+
 
 <main>
 <br>
@@ -37,7 +39,7 @@
 <br>
 
     <div>
-
+    <div>
 
         <div class="shoe-images">
             <img class="shoe-image" src="https://smokinjoes.com/media/aw_blog/images/blog-custom-shoes.jpg" alt="Shoe 1">
@@ -46,11 +48,15 @@
             <img class="shoe-image" src="https://thumbor.bigedition.com/nike-air-jordans-a-classic-sneaker/Uzib2KR_2lp70ZcE2GCODEh5v7s=/0x1005:1364x2029/800x0/filters:quality(80)/granite-web-prod/ce/78/ce7896d8291c4d46ad5b8cfd5f70db47.jpeg" alt="Shoe 4">
             <!-- Add more shoe images here -->
           </div>
+    </div>
+          
 
           <br>
           <br>
+
 
         <div class="gallery">
+          
             <div class="gallery-item">
               <img src="https://i.insider.com/5b6c865a8ea82f56278b4ddb?width=750&format=jpeg&auto=webp">
             </div>
@@ -88,6 +94,36 @@
 
 
 </main>
+
+<!-- <p style="text-align: center;"> Unlimited Shoes Photo </p> -->
+
+<div id="container"></div>
+
+<script>
+  const container = document.querySelector('#container');
+
+function generateShoe() {
+  const img = new Image();
+  img.src = `https://source.unsplash.com/200x200/?shoes&_=${Math.random()}`;
+  img.classList.add('shoe');
+  container.appendChild(img);
+}
+
+// generate initial set of shoes
+for (let i = 0; i < 20; i++) {
+  generateShoe();
+}
+
+// generate more shoes as user scrolls
+window.addEventListener('scroll', () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+    for (let i = 0; i < 10; i++) {
+      generateShoe();
+    }
+  }
+});
+
+</script>
     
     
 </body>
