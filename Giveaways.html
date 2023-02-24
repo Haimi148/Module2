@@ -34,10 +34,32 @@
 
 
 
+
         
-    <body><table id="t"></table>
+    <body>
+        
+        <table id="t"></table>
+
+        <div class="modal fade" id="gameOverModal" tabindex="-1" aria-labelledby="gameOverModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="gameOverModalLabel"></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p id="gameResult"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Play Again</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
     </body>
     <script>
+
       var empty = 0, you = 1, ai = -1
       function runGame() {
         var field = []
@@ -60,21 +82,24 @@
         return function() {
           if (!move(field, x, y, you)) return
           wins(field, you) ? gameOver('You won!') : aiMove(field)
+          console.log(field)
         }
       }
       function move(field, x, y, who) {
-        var e = field[y][x]
-        if (e.value != empty) return false
-        e.value = who
-        e.element.innerHTML = who == you ? 'X' : 'O'
-        return true
-      }
+  var e = field[y][x]
+  if (e.value != empty) return false
+  e.value = who
+  e.element.innerHTML = who == you ? 'X' : 'O'
+  console.log(field) // Add this line to log the updated field to the console
+  return true
+}
       function gameOver(msg) {
-        setTimeout(function() {
-          alert(msg)
-          window.location.reload()
-        }, 100)
-      }
+  var result = document.getElementById("gameResult");
+  result.textContent = msg;
+  var modal = new bootstrap.Modal(document.getElementById('gameOverModal'), {});
+  modal.show();
+}
+
       function wins(f, player) {
         function lineWins(x, y, dx, dy) {
           var a = f[y][x].value, b = f[y+dy][x+dx].value, c = f[y+2*dy][x+2*dx].value
@@ -128,6 +153,12 @@
         wins(field, ai) && gameOver("Computer won!")
       }
       runGame()
+
+      document.getElementById("gameOverModal").addEventListener("click", function() {
+  location.reload();
+});
+
+      
     </script>
     
     <style>
@@ -161,7 +192,68 @@
       }
     
       .cell { width: 5em; height: 5em; border: solid; text-align: center; }
-    
+      
+
+      #t {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#t td {
+  width: 33%;
+  height: 33%;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#t tr:nth-child(odd) td:nth-child(even),
+#t tr:nth-child(even) td:nth-child(odd) {
+  background-color: #c7c7c7;
+}
+
+/* Centering the button and the alert */
+#gameOverModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#gameOverModal .modal-content {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+#gameOverModal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#gameOverModal button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0F0;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#gameOverModal button:hover {
+  background-color: #090;
+}
+
+
     </style>
 </body>
 </html>
