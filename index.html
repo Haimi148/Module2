@@ -93,7 +93,7 @@
           </div>
           </div>
 
-          <div class="card">
+          <div class="card" id="buyButton" >
             <img src="/Img/Jordan3.png" alt="Shoe 5">
             <div class="card-info">
               <h3>Shoe 5</h3>
@@ -101,16 +101,30 @@
               <button class="buy-button">Buy now</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card" id="buyButton">
             <img src="/Img/Jordan5.png" alt="Shoe 6">
             <div class="card-info">
               <h3>Shoe 6</h3>
               <p>Description of shoe 6</p>
-              <button class="buy-button">Buy now</button>
+              <button class="buy-button" >Buy now</button>
             </div>
 
         </div>
       </div>
+      </div>
+
+      <div> 
+        <div id="popup" class="popup">
+          <h2>Checkout</h2>
+          <p>Item: <span id="itemName"></span></p>
+          <p>Price: $<span id="itemPrice"></span></p>
+          <form action="checkout.php" method="post">
+            <!-- Additional checkout form fields go here -->
+            <input type="submit" value="Complete Order">
+          </form>
+          <button id="closeButton" style="color: black">X</button>
+        </div>
+        
       </div>
 
       <!-- <-- FOOter --> 
@@ -144,8 +158,50 @@
 
 
       
-  
+  <script>
+// Get a reference to the Buy Button
+var buyButton = document.getElementById('buyButton');
+
+// Add a click event listener to the Buy Button
+buyButton.addEventListener('click', function() {
+  // Get the item name and price from wherever they are stored
+  var itemName = 'Your Item Name';
+  var itemPrice = 9.99;
+
+  // Update the popup checkout page with the item name and price
+  var itemNameSpan = document.getElementById('itemName');
+  var itemPriceSpan = document.getElementById('itemPrice');
+  itemNameSpan.innerHTML = itemName;
+  itemPriceSpan.innerHTML = itemPrice.toFixed(2);
+
+  // Display the popup with the item name and price
+  var popup = document.getElementById('popup');
+  popup.style.display = 'block';
+});
+
+// Get a reference to the Close Button
+var closeButton = document.getElementById('closeButton');
+
+// Add a click event listener to the Close Button
+closeButton.addEventListener('click', function() {
+  // Hide the popup checkout page
+  var popup = document.getElementById('popup');
+  popup.style.display = 'none';
+});
+
+let message = "Welcome to STEPWISE SHOES, affordable shoes that can't be found anywhere else. Our mission is quality over quantity.";
+
+if (!(message.includes("Nike") && message.includes("Adidas")) || message.includes("STEPWISE")) {
+  console.log("We have unique shoes!");
+} else {
+  console.log("We don't have any unique shoes :(");
+}
+
+
+  </script>
     </body>
+
+    
   
 </html>
 

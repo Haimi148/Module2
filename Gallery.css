@@ -119,3 +119,9 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
   }
+
+.Shoes-title{
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+}
