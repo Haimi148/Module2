@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+  }
+
+  .Tic {
+    text-align: center;
+    align-items: center;
+  }
+  /* Navbar css code */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: #fff;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-links a {
+    margin-left: 20px;
+    color: white;
+    text-decoration: none;
+  }
+
+  .cell { width: 5em; height: 5em; border: solid; text-align: center; }
+  
+
+  #t {
+margin: 0 auto;
+width: 300px;
+height: 300px;
+border: 1px solid black;
+border-collapse: collapse;
+}
+
+#t td {
+width: 33%;
+height: 33%;
+text-align: center;
+vertical-align: middle;
+font-size: 50px;
+font-weight: bold;
+}
+
+#t tr:nth-child(odd) td:nth-child(even),
+#t tr:nth-child(even) td:nth-child(odd) {
+background-color: #989696;
+}
+
+/* Centering the button and the alert */
+#gameOverModal {
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#gameOverModal .modal-content {
+width: 300px;
+padding: 20px;
+border-radius: 10px;
+background-color: #fff;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+text-align: center;
+}
+
+#gameOverModal h2 {
+font-size: 24px;
+margin-bottom: 20px;
+}
+
+#gameOverModal button {
+display: block;
+margin: 0 auto;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+background-color: #0F0;
+color: #fff;
+font-size: 16px;
+cursor: pointer;
+}
+
+#gameOverModal button:hover {
+background-color: #090;
+}
+
